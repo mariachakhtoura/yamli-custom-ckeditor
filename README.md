@@ -1,1 +1,1 @@
-# yamli-custom-ckeditor
+v 1.0.0
