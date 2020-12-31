@@ -127,28 +127,11 @@ function getFeedItems( queryText ) {
 	// that resolves after a 100ms timeout.
 	// This can be a server request or any sort of delayed action.
 	return new Promise( resolve => {
-		fetch( `https://api.yamli.com/transliterate.ashx?word=${ queryText }&tool=api&account_id=000006&prot=https%3A&hostname=www.yamli.com&path=%2Farabic-keyboard%2F&build=5515&sxhr_id=15`, {
-			headers: {
-				'Accept-Language': 'en-US,en;q=0.5',
-				'Accept-Encoding': 'gzip, deflate, br',
-				'Access-Control-Allow-Origin': '*'
-			},
-			referrer: 'https://www.yamli.com/arabic-keyboard/',
-			referrerPolicy: 'no-referrer'
-		} ).then( response => response.json() ).then( response => {
-			let items;
-			const matchedData = response.toString().match( /(?<=\{"data":")(.*?)(?=",")/ );
-			if ( matchedData && matchedData.length > 0 ) {
-			// const itemObjects = JSON.parse( matchedData[ 0 ] );
-				// const rItems = JSON.parse( itemObjects.data ).r;
-				const rItems = matchedData[ 0 ];
-				const arabicChoices = rItems.match( /[\u0621-\u064A ]+/g );
-				const totalChoices = [ queryText, ...arabicChoices ];
-				// console.log( arabicChoices );
-				resolve( totalChoices );
-			} else {
-				resolve( [] );
-			}
+		fetch( `https://oyamli-api.herokuapp.com/oyamli/${ queryText }`,
+			{
+				method: 'POST'
+			} ).then( response => response.json() ).then( response => {
+			resolve( response.result );
 		} );
 	} );
 
