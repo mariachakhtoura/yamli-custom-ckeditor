@@ -378,12 +378,12 @@ export default class MentionUI extends Plugin {
 			}
 
 			// console.log( 'data.text ' + data.text );
-			const feedText = requestFeedText( marker, data.text );
+			const feedText = requestFeedText( marker, data.text ) || '';
 			// console.log( 'feedtext ' + feedText );
-			// console.log( 'feedtext ' + feedText );
-			let matchedTextLength = feedText.length;
-			// console.log( marker );
-			if ( !marker.toString().includes( '(?<!@)' ) ) {
+			console.log( 'feedtext ' + feedText );
+			let matchedTextLength = feedText.length || 0;
+			console.log( matchedTextLength );
+			if ( !marker.toString().includes( '(?<!@?)' ) ) {
 				// console.log( marker );
 				matchedTextLength += 1;
 				// feedText += 1;
