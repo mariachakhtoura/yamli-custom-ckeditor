@@ -34,15 +34,6 @@ import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import InsertImage from './custom-plugins/InsertImage';
 // import Autocomplete from './custom-plugins/Autocomplete';
 import Direction from 'ckeditor5-direction/src/direction';
-import ExportToPDF from '@ckeditor/ckeditor5-export-pdf/src/exportpdf';
-import ExportToWord from '@ckeditor/ckeditor5-export-word/src/exportword';
-import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor';
-import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
-import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily';
-import FontSize from '@ckeditor/ckeditor5-font/src/fontsize';
-import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
-import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
-import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -53,7 +44,6 @@ ClassicEditor.builtinPlugins = [
 	Autoformat,
 	Bold,
 	Italic,
-	Underline,
 	BlockQuote,
 	CKFinder,
 	EasyImage,
@@ -75,14 +65,6 @@ ClassicEditor.builtinPlugins = [
 	Alignment,
 	InsertImage,
 	Mention,
-	FontBackgroundColor,
-	FontColor,
-	FontFamily,
-	FontSize,
-	Highlight,
-	HorizontalLine,
-	ExportToPDF,
-	ExportToWord,
 	Direction
 ];
 
@@ -99,12 +81,6 @@ ClassicEditor.defaultConfig = {
 			'bulletedList',
 			'numberedList',
 			'|',
-			'fontBackgroundColor',
-			'fontColor',
-			'fontFamily',
-			'fontSize',
-			'highlight',
-			'|',
 			'indent',
 			'outdent',
 			'|',
@@ -115,9 +91,6 @@ ClassicEditor.defaultConfig = {
 			'undo',
 			'redo',
 			'insertImage',
-			'horizontalLine',
-			'exportpdf',
-			'exportWord',
 			'direction'
 		]
 	},
