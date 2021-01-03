@@ -39,7 +39,7 @@ export default class MentionsView extends ListView {
 	 * {@link #select Selects} the first item.
 	 */
 	selectFirst() {
-		this.select( 0 );
+		this.select( 1 );
 	}
 
 	/**

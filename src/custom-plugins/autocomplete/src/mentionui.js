@@ -252,7 +252,7 @@ export default class MentionUI extends Plugin {
 
 			editor.execute( 'mention', {
 				mention: item,
-				text: item.text,
+				text: `${ item.text } `,
 				marker,
 				range
 			} );
@@ -381,7 +381,13 @@ export default class MentionUI extends Plugin {
 			const feedText = requestFeedText( marker, data.text );
 			// console.log( 'feedtext ' + feedText );
 			// console.log( 'feedtext ' + feedText );
-			const matchedTextLength = feedText.length;
+			let matchedTextLength = feedText.length;
+			// console.log( marker );
+			if ( !marker.toString().includes( '(?<!@)' ) ) {
+				// console.log( marker );
+				matchedTextLength += 1;
+				// feedText += 1;
+			}
 
 			// Create a marker range.
 			const start = focus.getShiftedBy( -matchedTextLength );

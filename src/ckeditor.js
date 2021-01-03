@@ -33,7 +33,7 @@ import Mention from './custom-plugins/autocomplete/src/mention';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import InsertImage from './custom-plugins/InsertImage';
 // import Autocomplete from './custom-plugins/Autocomplete';
-import Direction from 'ckeditor5-direction/src/direction';
+// import Direction from 'ckeditor5-direction/src/direction';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -64,8 +64,8 @@ ClassicEditor.builtinPlugins = [
 	TextTransformation,
 	Alignment,
 	InsertImage,
-	Mention,
-	Direction
+	Mention
+	// Direction
 ];
 
 // Editor configuration.
@@ -90,8 +90,8 @@ ClassicEditor.defaultConfig = {
 			'mediaEmbed',
 			'undo',
 			'redo',
-			'insertImage',
-			'direction'
+			'insertImage'
+			// 'direction'
 		]
 	},
 	image: {
@@ -109,41 +109,6 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
-	mention: {
-		feeds: [
-			{
-				marker: /\b(\w+)\b$/,
-				feed: getFeedItems,
-				minimumCharacters: 1
-			}
-		]
-	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
-
-function getFeedItems( queryText ) {
-	// As an example of an asynchronous action, return a promise
-	// that resolves after a 100ms timeout.
-	// This can be a server request or any sort of delayed action.
-	return new Promise( resolve => {
-		fetch( `https://oyamli-api.herokuapp.com/oyamli/${ queryText }`,
-			{
-				method: 'POST'
-			} ).then( response => response.json() ).then( response => {
-			resolve( response.result );
-		} );
-	} );
-
-	// Filtering function - it uses the `name` and `username` properties of an item to find a match.
-	function isItemMatching( item ) {
-		// Make the search case-insensitive.
-		const searchString = queryText.toLowerCase();
-
-		// Include an item in the search results if the name or username includes the current user input.
-		return (
-			item.name.toLowerCase().includes( searchString ) ||
-        item.id.toLowerCase().includes( searchString )
-		);
-	}
-}

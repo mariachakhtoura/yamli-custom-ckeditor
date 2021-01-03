@@ -28,7 +28,15 @@
 
 <script src="../build/ckeditor.js"></script>
 <script>
-	ClassicEditor.create( document.querySelector( '#editor' ) )
+	ClassicEditor.create( document.querySelector( '#editor' ), {
+    language: {
+            // The UI will be English.
+            ui: 'en',
+
+            // But the content will be edited in Arabic.
+            content: 'ar'
+        }
+  } )
 		.then( editor => {
 			window.editor = editor;
 		} )

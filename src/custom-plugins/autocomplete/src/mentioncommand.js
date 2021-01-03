@@ -144,7 +144,10 @@ export default class MentionCommand extends Command {
 
 			// Replace a range with the text with a mention.
 			model.insertContent( writer.createText( mentionText, attributesWithMention ), range );
-			// model.insertContent( writer.createText( ' ', currentAttributes ), range.start.getShiftedBy( mentionText.length ) );
+			// if ( !options.marker.toString().includes( '(?<!@)' ) ) {
+			// 	console.log( options.marker );
+			// 	model.insertContent( writer.createText( '', currentAttributes ), range.start.getShiftedBy( mentionText.length ) );
+			// }
 		} );
 	}
 }
